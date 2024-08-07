@@ -1,6 +1,6 @@
-const Node = require('./Node');
+import Node from "./Node";
 
-class LinkedList {
+class SinglyLinkedList {
   constructor() {
     this.head = null;
   }
@@ -47,4 +47,4 @@ class LinkedList {
   }
 }
 
-module.exports = LinkedList;
+module.exports = SinglyLinkedList;
