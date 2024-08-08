@@ -1,5 +1,3 @@
-// const LinkedList = require('./LinkedList');
-// const Node = require('./Node');
 import LinkedList from "../SinglyLinkedList";
 import Node from "../SinglyLinkedList/Node";
 
