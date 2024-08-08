@@ -99,7 +99,6 @@ class DoublyLinkedList {
     console.log(output);
   }
 }
-const subway = new DoublyLinkedList()
 
 
-module.exports = DoublyLinkedList;
+export default DoublyLinkedList;
