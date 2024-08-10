@@ -1,4 +1,4 @@
-import LinkedList from "../SinglyLinkedList";
+const LinkedList = require("../SinglyLinkedList");
 
 class Stack {
   constructor(maxSize = Infinity) {
@@ -44,4 +44,4 @@ class Stack {
 
 }
 
-export default Stack;
+module.exports = Stack;

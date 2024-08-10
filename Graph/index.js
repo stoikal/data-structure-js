@@ -1,5 +1,4 @@
-import Edge from './Edge.js';
-import Vertex from './Vertex.js';
+const Vertex = require('./Vertex.js');
 
 class Graph {
   constructor(isWeighted = false, isDirected = false) {
@@ -50,4 +49,4 @@ class Graph {
   }
 }
 
-export default Graph;
+module.exports = Graph;

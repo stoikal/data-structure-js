@@ -6,4 +6,4 @@ class Edge {
   }
 }
 
-export default Edge;
+module.exports = Edge;

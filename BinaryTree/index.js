@@ -46,5 +46,5 @@ class BinaryTree {
 
 };
 
-export default BinaryTree;
+module.exports = BinaryTree;
  

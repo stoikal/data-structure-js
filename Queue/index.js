@@ -1,4 +1,4 @@
-import LinkedList from "../SinglyLinkedList";
+const LinkedList = require("../SinglyLinkedList");
 
 class Queue {
   constructor(maxSize = Infinity) {
@@ -35,4 +35,4 @@ class Queue {
   }
 }
 
-export default Queue;
+module.exports = Queue;

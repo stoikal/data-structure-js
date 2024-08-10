@@ -82,4 +82,4 @@ const getParent = current => Math.floor((current / 2));
 const getLeft = current => current * 2;
 const getRight = current => current * 2 + 1;
 
-export default MinHeap;
+module.exports = MinHeap;

@@ -1,5 +1,5 @@
-import LinkedList from "../SinglyLinkedList";
-import Node from "../SinglyLinkedList/Node";
+const LinkedList = require("../SinglyLinkedList");
+const Node = require("../SinglyLinkedList/Node");
 
 class HashMap {
   constructor(size = 0) {
@@ -51,5 +51,5 @@ class HashMap {
   }
 }
 
-export default HashMap;
+module.exports = HashMap;
 

@@ -30,4 +30,4 @@ class Node {
   }
 }
 
-export default Node;
+module.exports = Node;

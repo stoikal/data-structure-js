@@ -49,4 +49,4 @@ class TreeNode {
   }
 };
 
-export default TreeNode;
+module.exports = TreeNode;

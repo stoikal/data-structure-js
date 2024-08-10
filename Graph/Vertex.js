@@ -1,4 +1,4 @@
-import Edge from "./Edge";
+const Edge = require("./Edge");
 
 class Vertex {
   constructor (data) {
@@ -27,4 +27,4 @@ class Vertex {
   }
 }
 
-export default Vertex;
+module.exports = Vertex;
