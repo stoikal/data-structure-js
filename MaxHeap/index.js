@@ -1,19 +1,20 @@
-class MinHeap {
+class MaxHeap {
   constructor() {
     this.heap = [null];
     this.size = 0;
   }
 
-  popMin () {
+  popMax () {
     if (this.size === 0) {
       return null 
     }
-    const min = this.heap[1];
+
+    const max = this.heap[1];
     this.heap[1] = this.heap[this.size];
     this.heap.pop();
     this.size--;
     this.heapify();
-    return min;
+    return max;
   }
 
   add (value) {
@@ -25,7 +26,7 @@ class MinHeap {
   bubbleUp () {
     let current = this.size;
 
-    while (current > 1 && this.heap[getParent(current)] > this.heap[current]) {
+    while (current > 1 && this.heap[getParent(current)] < this.heap[current]) {
       this.swap(current, getParent(current));
       current = getParent(current);
     }
@@ -39,15 +40,13 @@ class MinHeap {
     while (this.canSwap(current, leftChild, rightChild)) {
       // Only compare left & right if they both exist
       if (this.exists(leftChild) && this.exists(rightChild)) {
-
-        // Make sure to swap with the smaller of the two children
-        if (this.heap[leftChild] < this.heap[rightChild]) {
+        // Make sure to swap with the larger of the two children
+        if (this.heap[leftChild] > this.heap[rightChild]) {
           this.swap(current, leftChild);
           current = leftChild;
         } else {
           this.swap(current, rightChild);
           current = rightChild;
-
         }
       } else {
         // If only one child exist, always swap with the left
@@ -67,8 +66,8 @@ class MinHeap {
   canSwap (current, leftChild, rightChild) {
     // Check that one of the possible swap conditions exists
     return (
-      this.exists(leftChild) && this.heap[current] > this.heap[leftChild]
-      || this.exists(rightChild) && this.heap[current] > this.heap[rightChild]
+      this.exists(leftChild) && this.heap[current] < this.heap[leftChild]
+      || this.exists(rightChild) && this.heap[current] < this.heap[rightChild]
     );
   }
 
@@ -82,4 +81,4 @@ const getParent = current => Math.floor((current / 2));
 const getLeft = current => current * 2;
 const getRight = current => current * 2 + 1;
 
-export default MinHeap;
+module.exports = MaxHeap;
