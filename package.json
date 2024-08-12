@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "start": "tsx src/index.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.17.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=10"
+  }
+}
