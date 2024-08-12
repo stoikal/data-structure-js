@@ -28,10 +28,11 @@ class MaxHeap {
 
   bubbleUp () {
     let current = this.size
-    const parentValue = this.heap[getParent(current)] as number
-    const currentValue = this.heap[current] as number
 
-    while (current > 1 && parentValue < currentValue) {
+    while (
+      current > 1 &&
+      (this.heap[getParent(current)] as number) < (this.heap[current] as number)
+    ) {
       this.swap(current, getParent(current))
       current = getParent(current)
     }
@@ -76,8 +77,8 @@ class MaxHeap {
     const rightChildValue = this.heap[rightChild] as number
     // Check that one of the possible swap conditions exists
     return (
-      this.exists(leftChild) && currentValue < leftChildValue
-      || this.exists(rightChild) && currentValue < rightChildValue
+      (this.exists(leftChild) && currentValue < leftChildValue) ||
+      (this.exists(rightChild) && currentValue < rightChildValue)
     );
   }
 

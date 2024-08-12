@@ -1,4 +1,3 @@
-// const MaxHeap = require("./MaxHeap");
 import MaxHeap from "./MaxHeap";
 
 const mh = new MaxHeap();
