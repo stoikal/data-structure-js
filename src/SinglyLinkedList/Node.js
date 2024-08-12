@@ -1,20 +1,20 @@
 class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
+  constructor (data) {
+    this.data = data
+    this.next = null
   }
 
-  setNextNode(node) {
+  setNextNode (node) {
     if (node instanceof Node || node === null) {
-      this.next = node;
+      this.next = node
     } else {
-      throw new Error('Next node must be a member of the Node class.');
+      throw new Error('Next node must be a member of the Node class.')
     }
   }
 
-  getNextNode() {
-    return this.next;
+  getNextNode () {
+    return this.next
   }
 }
 
-module.exports = Node;
+module.exports = Node

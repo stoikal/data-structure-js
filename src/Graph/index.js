@@ -1,52 +1,52 @@
-const Vertex = require('./Vertex.js');
+const Vertex = require('./Vertex.js')
 
 class Graph {
-  constructor(isWeighted = false, isDirected = false) {
-    this.vertices = [];
-    this.isWeighted = isWeighted;
-    this.isDirected = isDirected;
+  constructor (isWeighted = false, isDirected = false) {
+    this.vertices = []
+    this.isWeighted = isWeighted
+    this.isDirected = isDirected
   }
 
-  addVertex(data) {
-    const newVertex = new Vertex(data);
-    this.vertices.push(newVertex);
+  addVertex (data) {
+    const newVertex = new Vertex(data)
+    this.vertices.push(newVertex)
 
-    return newVertex;
+    return newVertex
   }
 
-  removeVertex(vertex) {
-    this.vertices = this.vertices.filter(v => v !== vertex);
+  removeVertex (vertex) {
+    this.vertices = this.vertices.filter(v => v !== vertex)
   }
 
-  addEdge(vertexOne, vertexTwo, weight) {
-    const edgeWeight = this.isWeighted ? weight : null;
+  addEdge (vertexOne, vertexTwo, weight) {
+    const edgeWeight = this.isWeighted ? weight : null
 
     if (vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
-      vertexOne.addEdge(vertexTwo, edgeWeight);
+      vertexOne.addEdge(vertexTwo, edgeWeight)
 
       if (!this.isDirected) {
-        vertexTwo.addEdge(vertexOne, edgeWeight);
+        vertexTwo.addEdge(vertexOne, edgeWeight)
       }
     } else {
-      throw new Error('Expected Vertex arguments.');
+      throw new Error('Expected Vertex arguments.')
     }
   }
 
-  removeEdge(vertexOne, vertexTwo) {
+  removeEdge (vertexOne, vertexTwo) {
     if (vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
-      vertexOne.removeEdge(vertexTwo);
+      vertexOne.removeEdge(vertexTwo)
 
       if (!this.isDirected) {
-        vertexTwo.removeEdge(vertexOne);
+        vertexTwo.removeEdge(vertexOne)
       }
     } else {
-      throw new Error('Expected Vertex arguments.');
+      throw new Error('Expected Vertex arguments.')
     }
   }
 
-  print() {
-    this.vertices.forEach(vertex => vertex.print());
+  print () {
+    this.vertices.forEach(vertex => vertex.print())
   }
 }
 
-module.exports = Graph;
+module.exports = Graph

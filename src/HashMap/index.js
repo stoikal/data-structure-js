@@ -1,55 +1,54 @@
-const LinkedList = require("../SinglyLinkedList");
-const Node = require("../SinglyLinkedList/Node");
+const LinkedList = require('../SinglyLinkedList')
+const Node = require('../SinglyLinkedList/Node')
 
 class HashMap {
-  constructor(size = 0) {
+  constructor (size = 0) {
     this.hashmap = new Array(size)
       .fill(null)
-      .map(() => new LinkedList());
+      .map(() => new LinkedList())
   }
 
-  hash(key) {
-    let hashCode = 0;
+  hash (key) {
+    let hashCode = 0
     for (let i = 0; i < key.length; i++) {
-      hashCode += hashCode + key.charCodeAt(i);
+      hashCode += hashCode + key.charCodeAt(i)
     }
-    return hashCode % this.hashmap.length;
+    return hashCode % this.hashmap.length
   }
 
-  assign(key, value) {
-    const arrayIndex = this.hash(key);
-    const linkedList = this.hashmap[arrayIndex];
-    console.log(`Storing ${value} at index ${arrayIndex}`);
+  assign (key, value) {
+    const arrayIndex = this.hash(key)
+    const linkedList = this.hashmap[arrayIndex]
+    console.log(`Storing ${value} at index ${arrayIndex}`)
     if (linkedList.head === null) {
-      linkedList.addToHead({ key, value });
-      return;
+      linkedList.addToHead({ key, value })
+      return
     }
-    let current = linkedList.head;
+    let current = linkedList.head
     while (current) {
       if (current.data.key === key) {
-        current.data = { key, value };
+        current.data = { key, value }
       }
       if (!current.next) {
-        current.next = new Node({ key, value });
-        break;
+        current.next = new Node({ key, value })
+        break
       }
-      current = current.next;
+      current = current.next
     }
   }
 
-  retrieve(key) {
-    const arrayIndex = this.hash(key);
-    let current = this.hashmap[arrayIndex].head;
+  retrieve (key) {
+    const arrayIndex = this.hash(key)
+    let current = this.hashmap[arrayIndex].head
     while (current) {
       if (current.data.key === key) {
-        console.log(`\nRetrieving ${current.data.value} from index ${arrayIndex}`);
-        return current.data.value;
+        console.log(`\nRetrieving ${current.data.value} from index ${arrayIndex}`)
+        return current.data.value
       }
-      current = current.next;
+      current = current.next
     }
-    return null;
+    return null
   }
 }
 
-module.exports = HashMap;
-
+module.exports = HashMap

@@ -1,47 +1,46 @@
-const LinkedList = require("../SinglyLinkedList");
+const LinkedList = require('../SinglyLinkedList')
 
 class Stack {
-  constructor(maxSize = Infinity) {
-    this.stack = new LinkedList();
-    this.maxSize = maxSize;
-    this.size = 0;
+  constructor (maxSize = Infinity) {
+    this.stack = new LinkedList()
+    this.maxSize = maxSize
+    this.size = 0
   }
 
-  hasRoom() {
-    return this.size < this.maxSize;
+  hasRoom () {
+    return this.size < this.maxSize
   }
 
-  isEmpty() {
-    return this.size === 0;
+  isEmpty () {
+    return this.size === 0
   }
 
-  push(value) {
+  push (value) {
     if (this.hasRoom()) {
-      this.stack.addToHead(value);
-      this.size++;
+      this.stack.addToHead(value)
+      this.size++
     } else {
-      throw new Error("Stack is full");
+      throw new Error('Stack is full')
     }
   }
 
-  pop() {
+  pop () {
     if (this.isEmpty()) {
-      console.log('Stack is empty!');
+      console.log('Stack is empty!')
     } else {
-      const value = this.stack.removeHead();
-      this.size--;
-      return value;
+      const value = this.stack.removeHead()
+      this.size--
+      return value
     }
   }
 
-  peek() {
+  peek () {
     if (this.isEmpty()) {
-      return null;
+      return null
     } else {
-      return this.stack.head.data;
+      return this.stack.head.data
     }
   }
-
 }
 
-module.exports = Stack;
+module.exports = Stack

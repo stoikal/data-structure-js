@@ -1,50 +1,50 @@
-const Node = require("./Node");
+const Node = require('./Node')
 
 class SinglyLinkedList {
-  constructor() {
-    this.head = null;
+  constructor () {
+    this.head = null
   }
 
   addToHead (data) {
-    const newHead = new Node(data);
-    const currentHead = this.head;
-    this.head = newHead;
+    const newHead = new Node(data)
+    const currentHead = this.head
+    this.head = newHead
     if (currentHead) {
-      this.head.setNextNode(currentHead);
+      this.head.setNextNode(currentHead)
     }
   }
 
   addToTail (data) {
-    let tail = this.head;
+    let tail = this.head
     if (!tail) {
-      this.head = new Node(data);
+      this.head = new Node(data)
     } else {
       while (tail.getNextNode() !== null) {
-        tail = tail.getNextNode();
+        tail = tail.getNextNode()
       }
-      tail.setNextNode(new Node(data));
+      tail.setNextNode(new Node(data))
     }
   }
 
   removeHead () {
-    const removedHead = this.head;
+    const removedHead = this.head
     if (!removedHead) {
-      return;
+      return
     }
-    this.head = removedHead.getNextNode();
-    return removedHead.data;
+    this.head = removedHead.getNextNode()
+    return removedHead.data
   }
 
   printList () {
-    let currentNode = this.head;
-    let output = '<head> ';
+    let currentNode = this.head
+    let output = '<head> '
     while (currentNode !== null) {
-      output += currentNode.data + ' ';
-      currentNode = currentNode.getNextNode();
+      output += currentNode.data + ' '
+      currentNode = currentNode.getNextNode()
     }
-    output += '<tail>';
-    console.log(output);
+    output += '<tail>'
+    console.log(output)
   }
 }
 
-module.exports = SinglyLinkedList;
+module.exports = SinglyLinkedList
