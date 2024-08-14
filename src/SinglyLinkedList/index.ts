@@ -1,11 +1,13 @@
-const Node = require('./Node')
+import Node from "./Node"
 
 class SinglyLinkedList {
+  head: Node | null
+
   constructor () {
     this.head = null
   }
 
-  addToHead (data) {
+  addToHead (data: any) {
     const newHead = new Node(data)
     const currentHead = this.head
     this.head = newHead
@@ -14,13 +16,14 @@ class SinglyLinkedList {
     }
   }
 
-  addToTail (data) {
-    let tail = this.head
-    if (!tail) {
+  addToTail (data: any) {
+    if (this.head === null) {
       this.head = new Node(data)
     } else {
+      let tail = this.head
+
       while (tail.getNextNode() !== null) {
-        tail = tail.getNextNode()
+        tail = tail.getNextNode() as Node
       }
       tail.setNextNode(new Node(data))
     }
@@ -47,4 +50,4 @@ class SinglyLinkedList {
   }
 }
 
-module.exports = SinglyLinkedList
+export default SinglyLinkedList

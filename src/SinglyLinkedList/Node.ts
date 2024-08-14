@@ -1,10 +1,13 @@
 class Node {
-  constructor (data) {
+  data: any
+  next: Node | null
+
+  constructor (data: any) {
     this.data = data
     this.next = null
   }
 
-  setNextNode (node) {
+  setNextNode (node: Node) {
     if (node instanceof Node || node === null) {
       this.next = node
     } else {
@@ -17,4 +20,4 @@ class Node {
   }
 }
 
-module.exports = Node
+export default Node

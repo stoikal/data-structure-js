@@ -1,6 +1,10 @@
-const LinkedList = require('../SinglyLinkedList')
+import LinkedList from "../SinglyLinkedList";
 
 class Queue {
+  queue: LinkedList
+  maxSize: number
+  size: number
+
   constructor (maxSize = Infinity) {
     this.queue = new LinkedList()
     this.maxSize = maxSize
@@ -35,4 +39,4 @@ class Queue {
   }
 }
 
-module.exports = Queue
+export default Queue
