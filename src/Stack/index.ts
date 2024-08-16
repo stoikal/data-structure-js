@@ -1,6 +1,10 @@
-const LinkedList = require('../SinglyLinkedList')
+import LinkedList from "../SinglyLinkedList";
 
 class Stack {
+  stack: LinkedList
+  maxSize: number
+  size: number
+
   constructor (maxSize = Infinity) {
     this.stack = new LinkedList()
     this.maxSize = maxSize
@@ -15,7 +19,7 @@ class Stack {
     return this.size === 0
   }
 
-  push (value) {
+  push (value: any) {
     if (this.hasRoom()) {
       this.stack.addToHead(value)
       this.size++
@@ -38,9 +42,10 @@ class Stack {
     if (this.isEmpty()) {
       return null
     } else {
-      return this.stack.head.data
+      return this.stack.head?.data
     }
   }
 }
 
-module.exports = Stack
+export default Stack
+

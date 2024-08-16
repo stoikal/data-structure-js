@@ -1,4 +1,7 @@
 class MinHeap {
+  heap: Array<number|null>
+  size: number
+
   constructor () {
     this.heap = [null]
     this.size = 0
@@ -25,7 +28,10 @@ class MinHeap {
   bubbleUp () {
     let current = this.size
 
-    while (current > 1 && this.heap[getParent(current)] > this.heap[current]) {
+    while (
+      current > 1 && 
+      (this.heap[getParent(current)] as number) > (this.heap[current] as number)
+    ) {
       this.swap(current, getParent(current))
       current = getParent(current)
     }
@@ -39,8 +45,10 @@ class MinHeap {
     while (this.canSwap(current, leftChild, rightChild)) {
       // Only compare left & right if they both exist
       if (this.exists(leftChild) && this.exists(rightChild)) {
-        // Make sure to swap with the smaller of the two children
-        if (this.heap[leftChild] < this.heap[rightChild]) {
+        const leftChildValue = this.heap[leftChild] as number
+        const rightChildValue = this.heap[rightChild] as number
+    
+        if (leftChildValue < rightChildValue) {
           this.swap(current, leftChild)
           current = leftChild
         } else {
@@ -63,10 +71,13 @@ class MinHeap {
   }
 
   canSwap (current, leftChild, rightChild) {
+    const currentValue = this.heap[current] as number
+    const leftChildValue = this.heap[leftChild] as number
+    const rightChildValue = this.heap[rightChild] as number
     // Check that one of the possible swap conditions exists
     return (
-      this.exists(leftChild) && this.heap[current] > this.heap[leftChild] ||
-      this.exists(rightChild) && this.heap[current] > this.heap[rightChild]
+      this.exists(leftChild) && currentValue > leftChildValue ||
+      this.exists(rightChild) && currentValue > rightChildValue
     )
   }
 
@@ -79,4 +90,4 @@ const getParent = current => Math.floor((current / 2))
 const getLeft = current => current * 2
 const getRight = current => current * 2 + 1
 
-module.exports = MinHeap
+export default MinHeap

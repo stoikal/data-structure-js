@@ -1,10 +1,13 @@
 class TreeNode {
-  constructor (data) {
+  data: any
+  children: TreeNode[]
+
+  constructor (data: any) {
     this.data = data
     this.children = []
   }
 
-  addChild (child) {
+  addChild (child: TreeNode | any) {
     if (child instanceof TreeNode) {
       this.children.push(child)
     } else {
@@ -12,7 +15,7 @@ class TreeNode {
     }
   }
 
-  removeChild (childToRemove) {
+  removeChild (childToRemove: TreeNode | any) {
     const length = this.children.length
     this.children = this.children.filter(child => {
       return childToRemove instanceof TreeNode
@@ -40,13 +43,16 @@ class TreeNode {
   }
 
   breadthFirstTraversal () {
-    let queue = [this]
+    let queue: TreeNode[] = [this]
     while (queue.length > 0) {
       const current = queue.shift()
-      console.log(current.data)
-      queue = queue.concat(current.children)
+
+      if (current) {
+        console.log(current.data)
+        queue = queue.concat(current.children)
+      }
     }
   }
 };
 
-module.exports = TreeNode
+export default TreeNode

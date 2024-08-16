@@ -1,14 +1,16 @@
-const LinkedList = require('../SinglyLinkedList')
-const Node = require('../SinglyLinkedList/Node')
+import LinkedList from "../SinglyLinkedList"
+import Node from "../SinglyLinkedList/Node"
 
 class HashMap {
+  hashmap: LinkedList[]
+
   constructor (size = 0) {
     this.hashmap = new Array(size)
       .fill(null)
       .map(() => new LinkedList())
   }
 
-  hash (key) {
+  hash (key: string): number {
     let hashCode = 0
     for (let i = 0; i < key.length; i++) {
       hashCode += hashCode + key.charCodeAt(i)
@@ -16,7 +18,7 @@ class HashMap {
     return hashCode % this.hashmap.length
   }
 
-  assign (key, value) {
+  assign (key: string, value: any) {
     const arrayIndex = this.hash(key)
     const linkedList = this.hashmap[arrayIndex]
     console.log(`Storing ${value} at index ${arrayIndex}`)
@@ -37,7 +39,7 @@ class HashMap {
     }
   }
 
-  retrieve (key) {
+  retrieve (key: string) {
     const arrayIndex = this.hash(key)
     let current = this.hashmap[arrayIndex].head
     while (current) {
@@ -51,4 +53,4 @@ class HashMap {
   }
 }
 
-module.exports = HashMap
+export default HashMap

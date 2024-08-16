@@ -1,12 +1,15 @@
-const Node = require('./Node')
+import Node from "./Node"
 
 class DoublyLinkedList {
+  head: Node | null
+  tail: Node | null
+
   constructor () {
     this.head = null
     this.tail = null
   }
 
-  addToHead (data) {
+  addToHead (data: any) {
     const newHead = new Node(data)
     const currentHead = this.head
     if (currentHead) {
@@ -19,7 +22,7 @@ class DoublyLinkedList {
     }
   }
 
-  addToTail (data) {
+  addToTail (data: any) {
     const newTail = new Node(data)
     const currentTail = this.tail
     if (currentTail) {
@@ -62,9 +65,11 @@ class DoublyLinkedList {
     return removedTail.data
   }
 
-  removeByData (data) {
-    let nodeToRemove
+  removeByData (data: any) {
+    let nodeToRemove: Node | null = null
+
     let currentNode = this.head
+  
     while (currentNode !== null) {
       if (currentNode.data === data) {
         nodeToRemove = currentNode
@@ -72,7 +77,7 @@ class DoublyLinkedList {
       }
       currentNode = currentNode.getNextNode()
     }
-    if (!nodeToRemove) {
+    if (nodeToRemove === null) {
       return null
     }
     if (nodeToRemove === this.head) {
@@ -82,8 +87,8 @@ class DoublyLinkedList {
     } else {
       const nextNode = nodeToRemove.getNextNode()
       const previousNode = nodeToRemove.getPreviousNode()
-      nextNode.setPreviousNode(previousNode)
-      previousNode.setNextNode(nextNode)
+      nextNode?.setPreviousNode(previousNode)
+      previousNode?.setNextNode(nextNode)
     }
     return nodeToRemove
   }
@@ -100,4 +105,4 @@ class DoublyLinkedList {
   }
 }
 
-module.exports = DoublyLinkedList
+export default DoublyLinkedList

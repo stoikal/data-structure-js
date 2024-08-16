@@ -1,24 +1,28 @@
-const Vertex = require('./Vertex.js')
+import Vertex from "./Vertex"
 
 class Graph {
+  vertices: Vertex[]
+  isWeighted: boolean
+  isDirected: boolean
+
   constructor (isWeighted = false, isDirected = false) {
     this.vertices = []
     this.isWeighted = isWeighted
     this.isDirected = isDirected
   }
 
-  addVertex (data) {
+  addVertex (data: any) {
     const newVertex = new Vertex(data)
     this.vertices.push(newVertex)
 
     return newVertex
   }
 
-  removeVertex (vertex) {
+  removeVertex (vertex: Vertex) {
     this.vertices = this.vertices.filter(v => v !== vertex)
   }
 
-  addEdge (vertexOne, vertexTwo, weight) {
+  addEdge (vertexOne: Vertex, vertexTwo: Vertex, weight?: number) {
     const edgeWeight = this.isWeighted ? weight : null
 
     if (vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
@@ -32,7 +36,7 @@ class Graph {
     }
   }
 
-  removeEdge (vertexOne, vertexTwo) {
+  removeEdge (vertexOne: Vertex, vertexTwo: Vertex) {
     if (vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
       vertexOne.removeEdge(vertexTwo)
 
@@ -49,4 +53,4 @@ class Graph {
   }
 }
 
-module.exports = Graph
+export default Graph

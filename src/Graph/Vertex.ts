@@ -1,12 +1,15 @@
-const Edge = require('./Edge')
+import Edge from "./Edge"
 
 class Vertex {
-  constructor (data) {
+  data: any
+  edges: Edge[]
+
+  constructor (data: any) {
     this.data = data
     this.edges = []
   }
 
-  addEdge (vertex, weight) {
+  addEdge (vertex: Vertex, weight?: number | null) {
     if (vertex instanceof Vertex) {
       this.edges.push(new Edge(this, vertex, weight))
     } else {
@@ -14,7 +17,7 @@ class Vertex {
     }
   }
 
-  removeEdge (vertex) {
+  removeEdge (vertex: Vertex) {
     this.edges = this.edges.filter(edge => edge.end !== vertex)
   }
 
@@ -27,4 +30,4 @@ class Vertex {
   }
 }
 
-module.exports = Vertex
+export default Vertex

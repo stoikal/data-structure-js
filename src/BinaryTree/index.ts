@@ -1,12 +1,17 @@
 class BinaryTree {
-  constructor (value, depth = 1) {
+  value: number | string
+  depth: number
+  left: BinaryTree | null
+  right: BinaryTree | null
+
+  constructor (value: number | string, depth = 1) {
     this.value = value
     this.depth = depth
     this.left = null
     this.right = null
   }
 
-  insert (value) {
+  insert (value: number | string) {
     if (value < this.value) {
       if (!this.left) {
         this.left = new BinaryTree(value, this.depth + 1)
@@ -22,7 +27,7 @@ class BinaryTree {
     }
   }
 
-  getNodeByValue (value) {
+  getNodeByValue (value: number | string) {
     if (this.value === value) {
       return this
     } else if ((this.left) && (value < this.value)) {
@@ -45,4 +50,4 @@ class BinaryTree {
   }
 };
 
-module.exports = BinaryTree
+export default BinaryTree
