@@ -1,3 +1,5 @@
+import Queue from "../Queue";
+
 class BinaryTree {
   value: number | string
   depth: number
@@ -43,9 +45,27 @@ class BinaryTree {
     if (this.left) {
       this.left.depthFirstTraversal()
     }
+
     console.log(`Depth=${this.depth}, Value=${this.value}`)
+
     if (this.right) {
       this.right.depthFirstTraversal()
+    }
+  }
+
+  breadthFirstTraversal () {
+    const queue = new Queue()
+    queue.enqueue(this);
+
+    while (!queue.isEmpty()) {
+      const current = queue.dequeue()
+
+      if (current) {
+        console.log(`Depth=${current.depth}, Value=${current.value}`)
+
+        queue.enqueue(current.left)
+        queue.enqueue(current.right)
+      }
     }
   }
 };
